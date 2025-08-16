@@ -29,8 +29,8 @@ where
         holes[(x.into() - min) as usize] += 1;
     }
     let mut idx = 0;
-    for i in 0..size {
-        for _ in 0..holes[i] {
+    for (i, &count) in holes.iter().enumerate().take(size) {
+        for _ in 0..count {
             arr[idx] = T::from(i as i32 + min);
             idx += 1;
         }

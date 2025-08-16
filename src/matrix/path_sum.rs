@@ -12,6 +12,7 @@
 pub fn path_sum(grid: &[Vec<i32>], start: (usize, usize), end: (usize, usize), sum: i32) -> bool {
     let rows = grid.len();
     let cols = if rows > 0 { grid[0].len() } else { 0 };
+    #[allow(clippy::too_many_arguments)]
     fn dfs(
         grid: &[Vec<i32>],
         r: usize,

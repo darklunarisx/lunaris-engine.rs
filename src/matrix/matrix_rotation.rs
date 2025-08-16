@@ -9,7 +9,7 @@
 //! rotate_matrix(&mut mat);
 //! assert_eq!(mat, vec![vec![7,4,1], vec![8,5,2], vec![9,6,3]]);
 //! ```
-pub fn rotate_matrix<T: Clone>(matrix: &mut Vec<Vec<T>>) {
+pub fn rotate_matrix<T: Clone>(matrix: &mut [Vec<T>]) {
     let n = matrix.len();
     for layer in 0..n / 2 {
         let first = layer;

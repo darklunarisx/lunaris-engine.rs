@@ -15,8 +15,8 @@ pub fn palindromic_substrings<T: PartialEq + Copy>(s: &[T]) -> usize {
     let n = s.len();
     let mut count = 0;
     let mut dp = vec![vec![false; n]; n];
-    for i in 0..n {
-        dp[i][i] = true;
+    for (i, row) in dp.iter_mut().enumerate().take(n) {
+        row[i] = true;
         count += 1;
     }
     for l in 2..=n {

@@ -15,38 +15,38 @@
 //! merge_sort(&mut arr);
 //! assert_eq!(arr, vec![1, 2, 3, 4, 5, 6]);
 //! ```
-pub fn merge_sort<T: Ord + Clone>(vec: &mut Vec<T>) {
-    let n = vec.len();
+pub fn merge_sort<T: Ord + Clone>(slice: &mut [T]) {
+    let n = slice.len();
     if n <= 1 { return; }
     let mid = n / 2;
-    let mut left = vec[..mid].to_vec();
-    let mut right = vec[mid..].to_vec();
+    let mut left = slice[..mid].to_vec();
+    let mut right = slice[mid..].to_vec();
     merge_sort(&mut left);
     merge_sort(&mut right);
-    merge(vec, &left, &right);
+    merge(slice, &left, &right);
 }
 
-fn merge<T: Ord + Clone>(vec: &mut Vec<T>, left: &[T], right: &[T]) {
+fn merge<T: Ord + Clone>(slice: &mut [T], left: &[T], right: &[T]) {
     let mut i = 0;
     let mut j = 0;
     let mut k = 0;
     while i < left.len() && j < right.len() {
         if left[i] <= right[j] {
-            vec[k] = left[i].clone();
+            slice[k] = left[i].clone();
             i += 1;
         } else {
-            vec[k] = right[j].clone();
+            slice[k] = right[j].clone();
             j += 1;
         }
         k += 1;
     }
     while i < left.len() {
-        vec[k] = left[i].clone();
+        slice[k] = left[i].clone();
         i += 1;
         k += 1;
     }
     while j < right.len() {
-        vec[k] = right[j].clone();
+        slice[k] = right[j].clone();
         j += 1;
         k += 1;
     }

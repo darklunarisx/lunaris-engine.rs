@@ -13,12 +13,12 @@ pub fn spiral_traversal<T: Clone>(matrix: &[Vec<T>]) -> Vec<T> {
     if matrix.is_empty() { return res; }
     let (mut top, mut bottom, mut left, mut right) = (0, matrix.len()-1, 0, matrix[0].len()-1);
     while top <= bottom && left <= right {
-        for c in left..=right { res.push(matrix[top][c].clone()); }
+    for val in matrix[top].iter().skip(left).take(right - left + 1).cloned() { res.push(val); }
         if top == bottom { break; }
-        for r in top+1..=bottom { res.push(matrix[r][right].clone()); }
+    for row in matrix.iter().skip(top+1).take(bottom - top) { res.push(row[right].clone()); }
         if left == right { break; }
-        for c in (left..right).rev() { res.push(matrix[bottom][c].clone()); }
-        for r in (top+1..bottom).rev() { res.push(matrix[r][left].clone()); }
+    for c in (left..right).rev() { res.push(matrix[bottom][c].clone()); }
+    for r in (top+1..bottom).rev() { res.push(matrix[r][left].clone()); }
         top += 1; bottom -= 1; left += 1; right -= 1;
     }
     res

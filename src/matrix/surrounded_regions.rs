@@ -9,10 +9,10 @@
 //! solve_surrounded_regions(&mut board);
 //! assert_eq!(board, vec![vec!['X','X','X','X'], vec!['X','X','X','X'], vec!['X','X','X','X'], vec!['X','O','X','X']]);
 //! ```
-pub fn solve_surrounded_regions(board: &mut Vec<Vec<char>>) {
+pub fn solve_surrounded_regions(board: &mut [Vec<char>]) {
     let rows = board.len();
     let cols = if rows > 0 { board[0].len() } else { 0 };
-    fn dfs(board: &mut Vec<Vec<char>>, r: usize, c: usize, rows: usize, cols: usize) {
+    fn dfs(board: &mut [Vec<char>], r: usize, c: usize, rows: usize, cols: usize) {
         if r >= rows || c >= cols || board[r][c] != 'O' { return; }
         board[r][c] = '#';
         if r > 0 { dfs(board, r-1, c, rows, cols); }
@@ -28,10 +28,10 @@ pub fn solve_surrounded_regions(board: &mut Vec<Vec<char>>) {
         if board[0][c] == 'O' { dfs(board, 0, c, rows, cols); }
         if board[rows-1][c] == 'O' { dfs(board, rows-1, c, rows, cols); }
     }
-    for r in 0..rows {
-        for c in 0..cols {
-            if board[r][c] == 'O' { board[r][c] = 'X'; }
-            if board[r][c] == '#' { board[r][c] = 'O'; }
+    for row in board.iter_mut().take(rows) {
+        for cell in row.iter_mut().take(cols) {
+            if *cell == 'O' { *cell = 'X'; }
+            if *cell == '#' { *cell = 'O'; }
         }
     }
 }

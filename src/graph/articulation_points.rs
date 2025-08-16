@@ -40,6 +40,7 @@ where
     let mut low = HashMap::new();
     let mut timer = 0;
     let mut result = HashSet::new();
+    #[allow(clippy::too_many_arguments)]
     fn dfs<T: Eq + Hash + Clone + Ord>(
         u: &T,
         parent: Option<&T>,

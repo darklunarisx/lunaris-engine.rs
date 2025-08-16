@@ -20,8 +20,8 @@ where
     let n = set.len();
     let sum_usize = <T as Into<usize>>::into(sum);
     let mut dp = vec![vec![false; sum_usize + 1]; n + 1];
-    for i in 0..=n {
-        dp[i][0] = true;
+    for (_i, row) in dp.iter_mut().enumerate().take(n + 1) {
+        row[0] = true;
     }
     for i in 1..=n {
         for j in 1..=sum_usize {

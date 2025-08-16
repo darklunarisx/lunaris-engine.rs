@@ -13,7 +13,6 @@
 //! assert_eq!(arr, vec![2, 24, 45, 66, 75, 90, 170, 802]);
 //! ```
 /// Radix Sort: O(d(n + b)) time, O(n + b) space, not stable.
-
 /// Only works for unsigned integer types (u8, u16, u32, u64, usize).
 pub fn radix_sort<T>(arr: &mut [T])
 where

@@ -16,11 +16,11 @@
 /// Safe, classic Cycle Sort: No unsafe code, correct for all input.
 pub fn cycle_sort<T: Ord + PartialEq + Copy>(arr: &mut [T]) {
     let n = arr.len();
-    for cycle_start in 0..n - 1 {
+    for cycle_start in 0..n.saturating_sub(1) {
         let mut item = arr[cycle_start];
         let mut pos = cycle_start;
-        for i in cycle_start + 1..n {
-            if arr[i] < item {
+        for val in arr.iter().skip(cycle_start + 1) {
+            if *val < item {
                 pos += 1;
             }
         }
@@ -35,8 +35,8 @@ pub fn cycle_sort<T: Ord + PartialEq + Copy>(arr: &mut [T]) {
         }
         while pos != cycle_start {
             pos = cycle_start;
-            for i in cycle_start + 1..n {
-                if arr[i] < item {
+            for val in arr.iter().skip(cycle_start + 1) {
+                if *val < item {
                     pos += 1;
                 }
             }

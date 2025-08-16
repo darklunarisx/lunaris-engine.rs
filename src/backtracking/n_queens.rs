@@ -24,9 +24,10 @@ where
     where
         T: Copy + PartialEq + Add<Output = T> + Sub<Output = T> + From<u8> + Into<usize>,
     {
-        for i in 0..row {
-            if board[i] == col
-                || (board[i].into() as isize - col.into() as isize).abs() == (row as isize - i as isize).abs()
+        for (i, &val) in board.iter().take(row).enumerate() {
+            if val == col
+                || (val.into() as isize - col.into() as isize).abs()
+                    == (row as isize - i as isize).abs()
             {
                 return false;
             }
