@@ -1,4 +1,4 @@
-# 🧠 POFK Algorithm (Rust Edition)
+# 🧠 lunaris-engine (Rust Edition)
 
 ![Temporary Logo](https://github.com/POFKLabs/lunaris_engine/blob/main/logo/logo.jpg)
 
