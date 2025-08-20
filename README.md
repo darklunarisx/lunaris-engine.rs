@@ -20,7 +20,7 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-lunaris_engine = "0.0.1"
+lunaris_engine = "0.1.0"
 ```
 ## 🚀 Quick start
 ```rust

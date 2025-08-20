@@ -1,6 +1,6 @@
 [package]
 name = "lunaris_engine"
-version = "0.0.3"
+version = "0.1.0"
 edition = "2024"
 authors = ["Darklunaris <Darklunarisx@gmail.com>"]
 description = "A collection of efficient algorithms implemented in Rust for real-world projects."
